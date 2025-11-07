@@ -1,5 +1,7 @@
 package in.co.rays.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -16,8 +18,39 @@ public class UserServiceHibImpl implements UserServiceInt {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public long add(UserDTO dto) {
-
 		return dao.add(dto);
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void update(UserDTO dto) {
+		dao.update(dto);
+
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void delete(UserDTO dto) {
+		dao.delete(dto);
+
+	}
+
+	@Transactional(readOnly = true)
+	public UserDTO findByPk(long pk) {
+		return dao.findByPk(pk);
+	}
+
+	@Transactional(readOnly = true)
+	public UserDTO findByLogin(String login) {
+		return dao.findByLogin(login);
+	}
+
+	@Transactional(readOnly = true)
+	public UserDTO authenticate(String login, String password) {
+		return dao.authenticate(login, password);
+	}
+
+	@Transactional(readOnly = true)
+	public List search(UserDTO dto, int pageNo, int pageSize) {
+		return dao.search(dto, pageNo, pageSize);
 	}
 
 }
