@@ -6,11 +6,11 @@ import in.co.rays.dto.UserDTO;
 
 public interface UserServiceInt {
 
-	public long add(UserDTO dto);
+	public long add(UserDTO dto) throws Exception;
 
 	public void update(UserDTO dto);
 
-	public long save(UserDTO dto);
+	public long save(UserDTO dto) throws Exception;
 
 	public UserDTO delete(long id);
 

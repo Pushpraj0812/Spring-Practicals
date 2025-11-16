@@ -4,9 +4,11 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class UserRegistrationForm {
+public class UserForm {
 
 	protected long id = 0;
+
+	private Long[] ids;
 
 	@NotEmpty(message = "first name is required")
 	private String firstName;
@@ -18,18 +20,28 @@ public class UserRegistrationForm {
 	private String login;
 
 	@NotEmpty(message = "password is required")
-	@Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,12}")
+	@Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,12}", message = "Password must contain 8–12 chars, 1 uppercase, 1 lowercase, 1 digit, and 1 special character")
 	private String password;
 
 	@NotEmpty(message = "address is required")
 	private String address;
 
-	public Long getId() {
+	private int pageNo;
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
+	}
+
+	public Long[] getIds() {
+		return ids;
+	}
+
+	public void setIds(Long[] ids) {
+		this.ids = ids;
 	}
 
 	public String getFirstName() {
@@ -70,5 +82,13 @@ public class UserRegistrationForm {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public int getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
 	}
 }
