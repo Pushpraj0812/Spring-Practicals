@@ -29,6 +29,7 @@ public class LoginCtl {
 			HttpSession session, Model model) {
 
 		if (op != null && op.equals("logout")) {
+			System.out.println("logout method");
 			session.invalidate();
 			model.addAttribute("successMsg", "user logout successfully");
 			return "LoginView";

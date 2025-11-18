@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +11,7 @@
 <title>User View</title>
 </head>
 <body>
-	<%@ include file="Header.jsp"%>
+	<%-- <%@ include file="Header.jsp"%> --%>
 	<sf:form method="post" modelAttribute="form">
 		<div align="center">
 			<c:if test="${form.id>0}">
@@ -51,7 +55,7 @@
 			</table>
 		</div>
 	</sf:form>
-	<%@ include file="Footer.jsp"%>
+	<%-- <%@ include file="Footer.jsp"%> --%>
 </body>
 </body>
 </html>

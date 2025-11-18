@@ -7,26 +7,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Footer</title>
-<style>
-.footer {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	background-color: White;
-	color: black;
-	text-align: center;
-}
-</style>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
-	<div class="footer">
-		<HR>
-		<h3>
-			<strong>Copyrights &copy; Rays Technologies 2025</strong>
-		</h3>
-	</div>
+
 </body>
 </html>

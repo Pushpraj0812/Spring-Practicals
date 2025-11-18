@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ page isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
@@ -7,26 +8,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Footer</title>
-<style>
-.footer {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	background-color: White;
-	color: black;
-	text-align: center;
-}
-</style>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
-	<div class="footer">
-		<HR>
-		<h3>
-			<strong>Copyrights &copy; Rays Technologies 2025</strong>
-		</h3>
+
+	<div id="header">
+		<tiles:insertAttribute name="header" />
 	</div>
+
+	<div id="body">
+		<tiles:insertAttribute name="body" />
+	</div>
+
+	<div id="footer">
+		<tiles:insertAttribute name="footer" />
+	</div>
+
+
 </body>
 </html>

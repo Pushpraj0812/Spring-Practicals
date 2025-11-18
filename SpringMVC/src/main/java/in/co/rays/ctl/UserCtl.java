@@ -20,11 +20,17 @@ import in.co.rays.form.UserForm;
 import in.co.rays.service.UserServiceInt;
 
 @Controller
-@RequestMapping(value = "UserCtl")
+@RequestMapping(value = "/ctl/UserCtl")
 public class UserCtl {
 
 	@Autowired
 	public UserServiceInt service;
+
+	@ModelAttribute("form")
+	public void preload(Model model) {
+		List list = service.search(null, 0, 0);
+		model.addAttribute("userList", list);
+	}
 
 	@GetMapping
 	public String display(@ModelAttribute("form") UserForm form, @RequestParam(required = false) Long id) {

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +11,7 @@
 <title>User List</title>
 </head>
 <body>
-	<%@ include file="Header.jsp"%>
+	<%-- <%@ include file="Header.jsp"%> --%>
 	<div align="center">
 		<sf:form method="post" modelAttribute="form">
 			<h2>User List</h2>
@@ -17,6 +21,10 @@
 			<table>
 				<tr>
 					<td><sf:input path="firstName" />&nbsp; &nbsp;</td>
+					<td><sf:select path="id">
+							<sf:option value="0">-----------select------------</sf:option>
+							<sf:options items="${userList}" itemValue="id" itemLabel="login" />
+						</sf:select>&nbsp; &nbsp;</td>
 					<td><input type="submit" name="operation" value="search">
 					</td>
 				</tr>
@@ -42,7 +50,7 @@
 						<td><c:out value="${user.password }"></c:out></td>
 						<td><c:out value="${user.address }"></c:out></td>
 						<td align="center"><a
-							href="<c:url value="/UserCtl?id=${user.id}" />">edit</a></td>
+							href="<c:url value="/ctl/UserCtl?id=${user.id}" />">edit</a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -59,7 +67,7 @@
 				</tr>
 			</table>
 		</sf:form>
-		<%@ include file="Footer.jsp"%>
+		<%-- <%@ include file="Footer.jsp"%> --%>
 	</div>
 </body>
 </body>

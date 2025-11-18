@@ -17,9 +17,9 @@
 			<c:out value="${sessionScope.user.firstName}"></c:out>
 		</h3>
 		<a href="<c:url value="/WelcomeCtl"/>"><b>Welcome</b></a> |
-		<a href="<c:url value="/UserCtl"/>"><b>Add User</b></a> | <a
-			href="<c:url value="/UserCtl/search"/>"><b>User List</b></a> | <a
-			href="<c:url value="/LoginCtl?operation=logout"/>"><b>Logout</b></a>
+		<a href="<c:url value="/ctl/UserCtl"/>"><b>Add User</b></a> | <a
+			href="<c:url value="/ctl/UserCtl/search"/>"><b>User List</b></a> | <a
+			href="<c:url value="/LoginCtl?op=logout"/>"><b>Logout</b></a>
 	</c:if>
 	<c:if test="${empty sessionScope.user}">
 		<h3>Hi, Guest</h3>
