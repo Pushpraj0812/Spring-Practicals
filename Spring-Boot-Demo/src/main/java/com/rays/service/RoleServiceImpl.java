@@ -5,45 +5,45 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.rays.dao.UserDaoInt;
-import com.rays.dto.UserDTO;
+import com.rays.dao.RoleDAOInt;
+import com.rays.dto.RoleDTO;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserServiceInt {
+public class RoleServiceImpl implements RoleServiceInt {
 
 	@Autowired
-	public UserDaoInt dao;
+	public RoleDAOInt roleDao;
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public long add(UserDTO dto) {
-		long pk = dao.add(dto);
+	public long add(RoleDTO dto) {
+		long pk = roleDao.add(dto);
 		return pk;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(UserDTO dto) {
-		dao.update(dto);
+	public void update(RoleDTO dto) {
+		roleDao.update(dto);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(long id) {
 		try {
-			UserDTO dto = findById(id);
-			dao.delete(dto);
+			RoleDTO dto = findById(id);
+			roleDao.delete(dto);
 		} catch (RuntimeException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
 	@Transactional(readOnly = true)
-	public UserDTO findById(long pk) {
-		UserDTO dto = dao.findByPk(pk);
+	public RoleDTO findById(long pk) {
+		RoleDTO dto = roleDao.findByPk(pk);
 		return dto;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public long save(UserDTO dto) {
+	public long save(RoleDTO dto) {
 		Long id = dto.getId();
 		if (id != null && id > 0) {
 			update(dto);

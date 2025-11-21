@@ -3,6 +3,8 @@ package com.rays.common;
 import java.util.HashMap;
 import java.util.Map;
 
+// it generates response 
+
 public class ORSResponse {
 
 	public static final String INPUT_ERROR = "inputerror";

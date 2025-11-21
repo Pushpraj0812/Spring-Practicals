@@ -4,6 +4,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,20 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rays.common.BaseCtl;
 import com.rays.common.ORSResponse;
-import com.rays.dto.UserDTO;
+import com.rays.dto.RoleDTO;
 import com.rays.form.RoleForm;
-import com.rays.form.UserForm;
-import com.rays.service.UserServiceInt;
+import com.rays.service.RoleServiceInt;
 
 @RestController
-@RequestMapping(value = "UserCtl")
-public class UserCtl extends BaseCtl {
+@RequestMapping(value = "RoleCtl")
+public class RoleCtl extends BaseCtl {
 
 	@Autowired
-	public UserServiceInt userService;
+	public RoleServiceInt roleService;
 
 	@PostMapping("save")
-	public ORSResponse save(@RequestBody @Valid UserForm form, BindingResult bindingResult) {
+	public ORSResponse save(@RequestBody @Valid RoleForm form, BindingResult bindingResult) {
 
 		ORSResponse res = validate(bindingResult);
 
@@ -32,19 +33,18 @@ public class UserCtl extends BaseCtl {
 			return res;
 		}
 
-		UserDTO dto = (UserDTO) form.getDto();
+		RoleDTO dto = (RoleDTO) form.getDto();
 
-		long pk = userService.add(dto);
+		long pk = roleService.add(dto);
 
 		res.addData(pk);
 		res.addMessage("Role addedd successfully..!!!");
 
 		return res;
-
 	}
 
 	@PostMapping("update")
-	public ORSResponse update(@RequestBody @Valid UserForm form, BindingResult bindingResult) {
+	public ORSResponse update(@RequestBody @Valid RoleForm form, BindingResult bindingResult) {
 
 		ORSResponse res = validate(bindingResult);
 
@@ -52,13 +52,14 @@ public class UserCtl extends BaseCtl {
 			return res;
 		}
 
-		UserDTO dto = (UserDTO) form.getDto();
+		RoleDTO dto = (RoleDTO) form.getDto();
 
-		userService.update(dto);
+		roleService.update(dto);
 
-		res.addMessage("Role addedd successfully..!!!");
+		res.addMessage("Role update successfully..!!!");
 
 		return res;
+
 	}
 
 }
