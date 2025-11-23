@@ -1,5 +1,7 @@
 package com.rays.service;
 
+import java.util.List;
+
 import com.rays.dto.RoleDTO;
 
 public interface RoleServiceInt {
@@ -13,5 +15,7 @@ public interface RoleServiceInt {
 	public RoleDTO findById(long pk);
 
 	public long save(RoleDTO dto);
+	
+	public List search(RoleDTO dto, int pageNo, int pageSize);
 
 }
