@@ -27,8 +27,7 @@ public class UserForm extends BaseForm {
 	private String password;
 
 	@NotNull(message = "Date of birth is required")
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
 
 	private long roleId;

@@ -61,13 +61,20 @@ public class UserDaoImpl implements UserDaoInt {
 
 		CriteriaQuery<UserDTO> cq = builder.createQuery(UserDTO.class);
 
-		Root<RoleDTO> qRoot = cq.from(RoleDTO.class);
+		Root<UserDTO> qRoot = cq.from(UserDTO.class);
 
 		List<Predicate> predicateList = new ArrayList<Predicate>();
 
 		if (dto != null) {
 			if (dto.getFirstName() != null && dto.getFirstName().length() > 0) {
 				predicateList.add(builder.like(qRoot.get("name"), dto.getFirstName() + "%"));
+			}
+			if (dto.getRoleId() != null && dto.getRoleId() > 0) {
+				predicateList.add(builder.equal(qRoot.get("roleId"), dto.getRoleId()));
+			}
+
+			if (dto.getDob() != null && dto.getDob().getTime() > 0) {
+				predicateList.add(builder.equal(qRoot.get("dob"), dto.getDob()));
 			}
 		}
 
@@ -84,4 +91,31 @@ public class UserDaoImpl implements UserDaoInt {
 		return list;
 	}
 
+	@Override
+	public UserDTO findByUniqueKey(String attribute, String value) {
+
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+
+		CriteriaQuery<UserDTO> cq = builder.createQuery(UserDTO.class);
+
+		Root<UserDTO> qRoot = cq.from(UserDTO.class);
+
+		Predicate condition = builder.equal(qRoot.get(attribute), value);
+
+		cq.where(condition);
+
+		TypedQuery<UserDTO> tq = entityManager.createQuery(cq);
+
+		List<UserDTO> list = tq.getResultList();
+
+		UserDTO dto = null;
+
+		if (list.size() > 0) {
+
+			dto = list.get(0);
+
+		}
+
+		return dto;
+	}
 }
